@@ -1,0 +1,186 @@
+// 24k - 0559 Bazil uddin khan
+#include <iostream>
+using  namespace std;
+
+class Laptop
+{
+    private:
+    string Brand;
+    string Model;
+    double Processing;
+    double Storage;
+    double Ram;
+    
+    public:
+    
+    void AyeshaOnLaptops()
+    {
+        cout << " Ayesha Laptop on " << endl;
+    }
+    
+    void BilalOnLaptops()
+    {
+        cout << " Bilal Laptop on " << endl;
+    }
+    
+    void AyeshaOffLaptops()
+    {
+        cout << " Ayesha Laptop off " << endl;
+        
+    }
+    
+    void BilalOffLaptops()
+    {
+        cout << " Bilal Laptop off " << endl;
+        
+    }
+    
+    string GetBrand()
+    {
+        return Brand;
+    }
+    
+    string GetModel()
+    {
+        return Model;
+    }
+    
+    double GetProcessing()
+    {
+        return Processing;
+    }
+    
+    double GetStorage()
+    {
+        return Storage;
+    }
+    
+    double GetRam()
+    {
+        return Ram;
+        
+    }
+    
+    void StartProgram()
+    {
+        cout << " Start The Program " << endl;
+    }
+    
+    void EndProgram()
+     {
+        cout << " Stop The Program " << endl;
+    }
+    
+    void SetAllattributes(string brand,
+    string model,double processing, double storage,double ram)
+    {
+        Brand = brand;
+        Model = model;
+        Processing = processing;
+        Storage = storage;
+        Ram = ram;
+        
+    }
+    void EnterDetails(Laptop & Ayesha , Laptop & Bilal)
+    {
+        cout << " Enter Deatils For Ayesha " << endl;
+        string brand;
+        cout << " Enter Brand of Ayesha laptop " << endl;
+        cin >> brand;
+        
+        string model;
+        cout << " Enter Model of Ayesha laptop " << endl;
+        cin >> model;
+        
+        double processing;
+        cout << " Enter Processing of Ayesha laptop " << endl;
+        cin >> processing;
+        
+        double storage;
+        cout << " Enter Storage of Ayesha laptop " << endl;
+        cin >> storage;
+        
+        double ram;
+        cout << " Enter Ram of Ayesha laptop " << endl;
+        cin >> ram;
+        
+        Ayesha.SetAllattributes(brand,model,processing,storage,ram);
+        
+        
+        cout << " Enter Deatils For Bilal " << endl;
+        string BRAND;
+        cout << " Enter Brand of Bilal laptop " << endl;
+        cin >> BRAND;
+        
+        string MODEL;
+        cout << " Enter Model of Bilal laptop " << endl;
+        cin >> MODEL;
+        
+        double PROCESSING;
+        cout << " Enter Processing of BILAL laptop " << endl;
+        cin >> PROCESSING;
+        
+        double STORAGE;
+        cout << " Enter Storage of Bilal laptop " << endl;
+        cin >> STORAGE;
+        
+        double RAM;
+        cout << " Enter Ram of Bilal laptop " << endl;
+        cin >> RAM;
+        
+        Bilal.SetAllattributes(BRAND,MODEL,PROCESSING,STORAGE,RAM);
+        
+    }
+    void CheckSpecifications(Laptop Ayesha, Laptop Bilal)
+    {
+        if(Ayesha.GetBrand() == Bilal.GetBrand())
+        {
+            if(Ayesha.GetModel() == Bilal.GetModel())
+            {
+                cout << " Both have same Model " << endl;
+            }
+            else if(Ayesha.GetModel() > Bilal .GetModel())
+            {
+                 cout << " Ayesha has Advance Model " << endl;
+            }
+            else
+            {
+                cout << " Bilal has better Processing " << endl;
+            }
+        }
+        
+         if(Ayesha.GetRam() > Bilal.GetRam())
+        {
+            cout << " Ayesha laptop has better ram " << endl;
+            if(Ayesha.GetProcessing() > Bilal.GetProcessing())
+            {
+                
+               cout << " Ayesha laptop has better Processing power " << endl;
+            }
+
+        }
+        
+       if(Ayesha.GetRam()  < Bilal.GetRam())
+        {
+            cout << " Bilal laptop has better ram " << endl;
+            if(Ayesha.GetProcessing() < Bilal.GetProcessing())
+            {
+               cout << " Bilal laptop has better Processing power " << endl;
+            }
+        }
+    }
+};
+int main() 
+{
+   Laptop Ayesha;
+   Ayesha.StartProgram();
+   Ayesha.AyeshaOnLaptops();
+   Laptop Bilal;
+   Bilal.BilalOnLaptops();
+   Ayesha.EnterDetails(Ayesha,Bilal);
+   Ayesha.CheckSpecifications(Ayesha,Bilal);
+   Ayesha.AyeshaOffLaptops();
+   Bilal.BilalOffLaptops();
+   Ayesha.EndProgram();
+    return 0;
+}
