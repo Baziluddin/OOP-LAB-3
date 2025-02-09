@@ -1,0 +1,185 @@
+// 24k-0559 BAZIL-UDDIN-KHAN
+#include <iostream>
+using namespace std;
+
+class Planner
+{
+    private:
+    string Array[12][30];
+    
+    public:
+    void EnterPlans()
+    {
+        
+        
+        for(int i =0; i < 12; i++)
+        {
+            string ChoiceMonth;
+            cout << " Do you want To enter Tasks in this Month.  Enter In (Yes/No).  Month:  " << i+1  << endl;
+            cin >> ChoiceMonth;
+            if(ChoiceMonth == "Yes")
+            {
+                 for(int j =0; j < 30; j++)
+                {
+                    string WantTask;
+                    cout << " Enter in (Yes/No) if You want to add task in month " << i+1 << endl;
+                    cin >> WantTask;
+                    
+                    if(WantTask == "Yes")
+                    {
+                        string Task;
+                        cout << " Enter Task " << endl;
+                        cin >> Task;
+                        Array[i][j] = Task;
+                        
+                    }
+                    else
+                    {
+                        Array[i][j] = " ";
+                        string Result;
+                        cout << " If you want To add any other Tasks in the month.Enyer in (Yes/No)  " << endl;
+                        cin >> Result;
+                        if(Result == "No")
+                        {
+                            break;
+                        }
+                    }
+                }
+                
+            }
+           
+        }
+    }
+    
+    void ReviewPlans()
+    {
+        for(int i =0; i < 12;i++)
+        {
+            cout << " The Task for month " << i+1 << " are " << endl;
+            for(int j =0; j < 30; j++)
+            {
+                cout << Array[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+    void Updatetask()
+    {
+        int Monthnum;
+        cout << " Enter Month (1-12) " << endl;
+        cin >> Monthnum;
+        if(Monthnum > 0 && Monthnum <13)
+        {
+            string Task;
+            cout << " Enter Task To Update " << endl;
+            cin >> Task;
+            for(int i =0; i < 12;i++)
+            {
+               if(Monthnum == i+1)
+              {
+                for(int j =0; j < 30; j++)
+                 {
+                     if(Array[i][j] == Task)
+                     {
+                      string Newtask;
+                      cout << " Enter New    Task " << endl;
+                      cin >> Newtask;
+                      Array[i][j] = Newtask;
+                      
+                     }
+                
+                  }
+               }
+            }
+            
+        }
+        else
+        {
+            cout << " Invalid Input " << endl;
+        }
+    }
+    
+    void RemoveTask()
+    {
+        int Monthnum;
+        cout << " Enter Month (1-12) " << endl;
+        cin >> Monthnum;
+        if(Monthnum > 0 && Monthnum < 13)
+        {
+            string Task;
+            cout << " Enter Task " << endl;
+            cin >> Task;
+            for(int i =0; i < 12;i++)
+            {
+               if(Monthnum == i+1)
+               {
+                  for(int j =0; j < 30; j++)
+                  {
+                      if(Array[i][j] == Task)
+                     {
+                     Array[i][j] = " ";
+                     }
+                
+                   }
+               }
+            }
+            
+        }
+        else
+        {
+            cout << " Invalid Input " << endl;
+        }
+        
+           
+        
+    }
+};
+
+
+
+
+int main()
+{
+    cout << " Welcome To Your Planner Management System " << endl;
+    
+    Planner planner;
+    while(1)
+    {
+        string Choice;
+        cout << " Enter Your Choice (Add/Remove/Update/Display/Exit) " << endl;
+        cin >> Choice;
+        
+        if(Choice == "Add")
+        {
+           planner.EnterPlans();
+        }
+        else  if(Choice == "Update")
+        {
+         planner.Updatetask();
+        }
+       else if(Choice == "Remove")
+        {
+         planner.RemoveTask();
+        }
+       else if(Choice == "Display")
+       {
+          planner.ReviewPlans();
+       }
+       
+       else if(Choice == "Exit")
+       {
+           break;
+       }
+       
+       else
+       {
+        cout << " Invalid " << endl;
+       }
+        
+    }
+    
+    
+   
+
+    return 0;
+}
